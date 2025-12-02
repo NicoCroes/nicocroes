@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { useGeneralData } from "./hooks/useData";
+import LaguageToggle from "./components/LanguageToggle";
 
 function App() {
   const { data, isLoading, error } = useGeneralData();
@@ -12,6 +13,7 @@ function App() {
       <motion.h1 className="font-thin" drag>
         {data?.name && data.name}
       </motion.h1>
+      <LaguageToggle />
     </>
   );
 }
