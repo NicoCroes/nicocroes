@@ -348,26 +348,154 @@ export type GeneralDataQueryResult = {
   }> | null;
 } | null;
 // Variable: dpWorksListQuery
-// Query: *[_type == "dpWorks"] | order(date desc){    id,    title,    slug,    date,    client,    director,    production,    mainImage,  }
-export type DpWorksListQueryResult = Array<never>;
+// Query: *[_type == "dpWork"] | order(date desc){    _id,    title,    slug,    date,    client,    director,    production,    mainImage,  }
+export type DpWorksListQueryResult = Array<{
+  _id: string;
+  title: {
+    es?: string;
+    en?: string;
+  } | null;
+  slug: Slug | null;
+  date: string | null;
+  client: string | null;
+  director: string | null;
+  production: string | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+}>;
 // Variable: dpWorkBySlugQuery
-// Query: *[_type == "dpWorks" && slug.current == $slug][0]{    id,    title,    slug,    date,    client,    director,    production,    mainImage,    vimeoEmbed,    images,    additionalInfo,  }
-export type DpWorkBySlugQueryResult = null;
+// Query: *[_type == "dpWork" && slug.current == $slug][0]{    _id,    title,    slug,    date,    client,    director,    production,    mainImage,    vimeoEmbed,    images,    additionalInfo,  }
+export type DpWorkBySlugQueryResult = {
+  _id: string;
+  title: {
+    es?: string;
+    en?: string;
+  } | null;
+  slug: Slug | null;
+  date: string | null;
+  client: string | null;
+  director: string | null;
+  production: string | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  vimeoEmbed: string | null;
+  images: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }> | null;
+  additionalInfo: {
+    es?: BlockContent;
+    en?: BlockContent;
+  } | null;
+} | null;
 // Variable: colorWorksListQuery
-// Query: *[_type == "colorWorks"] | order(date desc){    id,    title,    slug,    date,    client,    director,    production,    mainImage,  }
-export type ColorWorksListQueryResult = Array<never>;
+// Query: *[_type == "colorWork"] | order(date desc){    _id,    title,    slug,    date,    client,    director,    production,    mainImage,  }
+export type ColorWorksListQueryResult = Array<{
+  _id: string;
+  title: {
+    es?: string;
+    en?: string;
+  } | null;
+  slug: Slug | null;
+  date: string | null;
+  client: string | null;
+  director: string | null;
+  production: string | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+}>;
 // Variable: colorWorkBySlugQuery
-// Query: *[_type == "colorWorks" && slug.current == $slug][0]{    id,    title,    slug,    date,    client,    director,    production,    mainImage,    vimeoEmbed,    images,    additionalInfo,  }
-export type ColorWorkBySlugQueryResult = null;
+// Query: *[_type == "colorWork" && slug.current == $slug][0]{    _id,    title,    slug,    date,    client,    director,    production,    mainImage,    vimeoEmbed,    images,    additionalInfo,  }
+export type ColorWorkBySlugQueryResult = {
+  _id: string;
+  title: {
+    es?: string;
+    en?: string;
+  } | null;
+  slug: Slug | null;
+  date: string | null;
+  client: string | null;
+  director: string | null;
+  production: string | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  vimeoEmbed: string | null;
+  images: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }> | null;
+  additionalInfo: {
+    es?: BlockContent;
+    en?: BlockContent;
+  } | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "\n  *[_type == \"generalData\"][0]{\n    name,\n    detail,\n    coverVideo,\n    coverThumbnail,\n    colorTitle,\n    bio,\n    profileImage,\n    links\n  }": GeneralDataQueryResult;
-    "\n  *[_type == \"dpWorks\"] | order(date desc){\n    id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n  }": DpWorksListQueryResult;
-    "\n  *[_type == \"dpWorks\" && slug.current == $slug][0]{\n    id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n    vimeoEmbed,\n    images,\n    additionalInfo,\n  }": DpWorkBySlugQueryResult;
-    "\n  *[_type == \"colorWorks\"] | order(date desc){\n    id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n  }": ColorWorksListQueryResult;
-    "\n  *[_type == \"colorWorks\" && slug.current == $slug][0]{\n    id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n    vimeoEmbed,\n    images,\n    additionalInfo,\n  }": ColorWorkBySlugQueryResult;
+    "\n  *[_type == \"dpWork\"] | order(date desc){\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n  }": DpWorksListQueryResult;
+    "\n  *[_type == \"dpWork\" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n    vimeoEmbed,\n    images,\n    additionalInfo,\n  }": DpWorkBySlugQueryResult;
+    "\n  *[_type == \"colorWork\"] | order(date desc){\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n  }": ColorWorksListQueryResult;
+    "\n  *[_type == \"colorWork\" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n    vimeoEmbed,\n    images,\n    additionalInfo,\n  }": ColorWorkBySlugQueryResult;
   }
 }

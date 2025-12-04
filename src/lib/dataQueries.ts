@@ -18,8 +18,8 @@ export async function getGeneralData() {
 }
 
 const dpWorksListQuery = defineQuery(`
-  *[_type == "dpWorks"] | order(date desc){
-    id,
+  *[_type == "dpWork"] | order(date desc){
+    _id,
     title,
     slug,
     date,
@@ -34,8 +34,8 @@ export async function getDpWorksList() {
 }
 
 const dpWorkBySlugQuery = defineQuery(`
-  *[_type == "dpWorks" && slug.current == $slug][0]{
-    id,
+  *[_type == "dpWork" && slug.current == $slug][0]{
+    _id,
     title,
     slug,
     date,
@@ -53,8 +53,8 @@ export async function getDpWorkBySlug(slug: string) {
 }
 
 const colorWorksListQuery = defineQuery(`
-  *[_type == "colorWorks"] | order(date desc){
-    id,
+  *[_type == "colorWork"] | order(date desc){
+    _id,
     title,
     slug,
     date,
@@ -69,8 +69,8 @@ export async function getColorWorksList() {
 }
 
 const colorWorkBySlugQuery = defineQuery(`
-  *[_type == "colorWorks" && slug.current == $slug][0]{
-    id,
+  *[_type == "colorWork" && slug.current == $slug][0]{
+    _id,
     title,
     slug,
     date,
