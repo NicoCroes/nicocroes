@@ -14,6 +14,7 @@
   "dependencies": {
     "@portabletext/react": "^5.0.0",
     "@sanity/client": "^7.13.1",
+    "@sanity/image-url": "^2.0.2",
     "@tailwindcss/vite": "^4.1.17",
     "@tanstack/react-query": "^5.90.11",
     "groq": "^4.19.0",
