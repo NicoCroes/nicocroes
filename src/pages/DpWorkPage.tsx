@@ -4,6 +4,7 @@ import useLanguage from "../hooks/useLanguage";
 import { PortableText } from "@portabletext/react";
 import VimeoEmbedPlayer from "../components/VimeoEmbedPlayer";
 import { urlFor } from "../lib/sanityImageUrl";
+import ImageGallery from "../components/ImageGallery";
 
 export default function DpWorkPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -38,6 +39,9 @@ export default function DpWorkPage() {
             uiColor="0c2e62"
           />
         </div>
+      )}
+      {work?.images?.length && (
+        <ImageGallery images={work?.images ?? work.images} />
       )}
       <NavLink to="/">{language === "es" ? "volver" : "go back"}</NavLink>
     </>
