@@ -9,14 +9,12 @@ export default function Bio() {
   if (isLoading) return <div>...</div>;
   if (error) return <div>{error.message}</div>;
 
+  const bio = data?.bio?.[language] ?? data?.bio?.es ?? data?.bio?.en ?? null;
+
   return (
     <>
       <h1 className="my-4">Bio</h1>
-      <div className="max-w-prose">
-        {data?.bio?.es && (
-          <PortableText value={data.bio[language] || data.bio.es} />
-        )}
-      </div>
+      <div className="max-w-prose">{bio && <PortableText value={bio} />}</div>
     </>
   );
 }

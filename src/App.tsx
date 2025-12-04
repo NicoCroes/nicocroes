@@ -1,21 +1,38 @@
-import { motion } from "motion/react";
 import { useGeneralData } from "./hooks/useData";
+import { Routes, Route, useLocation } from "react-router";
+import { AnimatePresence } from "motion/react";
+import Works from "./pages/Works";
+import DpWorkPage from "./pages/DpWorkPage";
+import Color from "./pages/Color";
 import Bio from "./pages/Bio";
 import LaguageToggle from "./components/LanguageToggle";
+import NavMenu from "./components/NavMenu";
 
 function App() {
   const { data, isLoading, error } = useGeneralData();
+  const location = useLocation();
 
   if (isLoading) return <div>...</div>;
   if (error) return <div>{error.message}</div>;
 
   return (
     <>
-      <motion.h1 className="font-thin" drag>
-        {data?.name && data.name}
-      </motion.h1>
-      <Bio />
-      <LaguageToggle />
+      <header className="flex items-start justify-between">
+        <div className="flex gap-4">
+          <h1 className="font-bold">{data?.name && data.name}</h1>
+          <NavMenu />
+        </div>
+        <LaguageToggle />
+      </header>
+
+      <AnimatePresence>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Works />} />
+          <Route path="/dp/:slug" element={<DpWorkPage />} />
+          <Route path="/color" element={<Color />} />
+          <Route path="/bio" element={<Bio />} />
+        </Routes>
+      </AnimatePresence>
     </>
   );
 }
