@@ -44,7 +44,11 @@ const dpWorkBySlugQuery = defineQuery(`
     production,
     mainImage,
     vimeoEmbed,
-    images,
+    images[]{
+      _key, 
+      asset,
+      "dimensions": asset->metadata.dimensions,
+    },
     additionalInfo,
   }`);
 

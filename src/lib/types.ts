@@ -374,7 +374,7 @@ export type DpWorksListQueryResult = Array<{
   } | null;
 }>;
 // Variable: dpWorkBySlugQuery
-// Query: *[_type == "dpWork" && slug.current == $slug][0]{    _id,    title,    slug,    date,    client,    director,    production,    mainImage,    vimeoEmbed,    images,    additionalInfo,  }
+// Query: *[_type == "dpWork" && slug.current == $slug][0]{    _id,    title,    slug,    date,    client,    director,    production,    mainImage,    vimeoEmbed,    images[]{      _key,       asset,      "dimensions": asset->metadata.dimensions,    },    additionalInfo,  }
 export type DpWorkBySlugQueryResult = {
   _id: string;
   title: {
@@ -400,17 +400,14 @@ export type DpWorkBySlugQueryResult = {
   } | null;
   vimeoEmbed: string | null;
   images: Array<{
-    asset?: {
+    _key: string;
+    asset: {
       _ref: string;
       _type: "reference";
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-    _key: string;
+    } | null;
+    dimensions: SanityImageDimensions | null;
   }> | null;
   additionalInfo: {
     es?: BlockContent;
@@ -494,7 +491,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "\n  *[_type == \"generalData\"][0]{\n    name,\n    detail,\n    coverVideo,\n    coverThumbnail,\n    colorTitle,\n    bio,\n    profileImage,\n    links\n  }": GeneralDataQueryResult;
     "\n  *[_type == \"dpWork\"] | order(date desc){\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n  }": DpWorksListQueryResult;
-    "\n  *[_type == \"dpWork\" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n    vimeoEmbed,\n    images,\n    additionalInfo,\n  }": DpWorkBySlugQueryResult;
+    "\n  *[_type == \"dpWork\" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n    vimeoEmbed,\n    images[]{\n      _key, \n      asset,\n      \"dimensions\": asset->metadata.dimensions,\n    },\n    additionalInfo,\n  }": DpWorkBySlugQueryResult;
     "\n  *[_type == \"colorWork\"] | order(date desc){\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n  }": ColorWorksListQueryResult;
     "\n  *[_type == \"colorWork\" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n    vimeoEmbed,\n    images,\n    additionalInfo,\n  }": ColorWorkBySlugQueryResult;
   }
