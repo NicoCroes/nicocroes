@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router";
 import { AnimatePresence } from "motion/react";
 import Works from "./pages/Works";
 import DpWorkPage from "./pages/DpWorkPage";
+import ColorWorkPage from "./pages/ColorWorkPage";
 import Color from "./pages/Color";
 import Bio from "./pages/Bio";
 import LaguageToggle from "./components/LanguageToggle";
@@ -36,6 +37,7 @@ function App() {
           <Route path="/" element={<Works />} />
           <Route path="/dp/:slug" element={<DpWorkPage />} />
           <Route path="/color" element={<Color />} />
+          <Route path="/color/:slug" element={<ColorWorkPage />} />
           <Route path="/bio" element={<Bio />} />
         </Routes>
       </AnimatePresence>
