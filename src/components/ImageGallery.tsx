@@ -1,16 +1,24 @@
 import { useState } from "react";
-import type { DpWorkBySlugQueryResult } from "../lib/types";
+import type {
+  DpWorkBySlugQueryResult,
+  ColorWorkBySlugQueryResult,
+} from "../lib/types";
 import { motion, AnimatePresence } from "motion/react";
 import useIsMobile from "../hooks/useIsMobile";
 import Lightbox from "./Lightbox";
 import { urlFor } from "../lib/sanityImageUrl";
 
-type ProjectImages = NonNullable<
+type DpImage = NonNullable<
   NonNullable<DpWorkBySlugQueryResult>["images"]
->;
+>[number];
+type ColorImage = NonNullable<
+  NonNullable<ColorWorkBySlugQueryResult>["images"]
+>[number];
+
+type GalleryImage = DpImage | ColorImage;
 
 interface ImageGalleryProps {
-  images: ProjectImages;
+  images: GalleryImage[];
 }
 
 export default function ImageGallery({ images }: ImageGalleryProps) {
