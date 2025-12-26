@@ -11,7 +11,7 @@ export default function DpWorksGrid({ data }: DpWorksGidType) {
   const { language } = useLanguage();
 
   return (
-    <div className="flex gap-4 px-4">
+    <div className="grid grid-cols-1 gap-4 sm:w-3/4 sm:grid-cols-3">
       {data?.length &&
         data.map((work) => (
           <NavLink to={`/dp/${work.slug?.current}`} key={work._id}>
