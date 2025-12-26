@@ -19,6 +19,7 @@ export default function DpWorksGrid({ data }: DpWorksGidType) {
               {work?.title?.[language] || work?.title?.es || work?.title?.en}
               {work?.mainImage && (
                 <img
+                  className="rounded-2xl"
                   src={urlFor(work.mainImage).format("webp").width(600).url()}
                 />
               )}

@@ -81,7 +81,7 @@ export default function VimeoPlayer({
     <div className="absolute inset-0 overflow-hidden bg-black">
       <iframe
         ref={iframeRef}
-        className={`absolute ${background === 1 ? "pointer-events-none" : ""}`}
+        className={`absolute rounded-2xl ${background === 1 ? "pointer-events-none" : ""}`}
         src={src}
         allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
       />
@@ -90,11 +90,11 @@ export default function VimeoPlayer({
     <div className="relative">
       {previewImage && (
         <div className="absolute inset-0 -z-10">
-          <img src={previewImage} className="h-full w-full" />
+          <img src={previewImage} className="h-full w-full rounded-2xl" />
         </div>
       )}
       <iframe
-        className="aspect-video h-full w-full"
+        className="aspect-video h-full w-full rounded-2xl"
         src={src}
         allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
       />
