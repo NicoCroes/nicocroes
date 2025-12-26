@@ -9,7 +9,7 @@ export default function VideoHeader() {
   if (error) return <div>{error.message}</div>;
 
   return (
-    <div className="flex w-full flex-col items-center justify-center sm:w-1/2">
+    <div className="flex w-full flex-col items-center justify-center sm:w-3/4">
       <div className="w-full">
         {data?.coverVideo && (
           <VimeoEmbedPlayer
