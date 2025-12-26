@@ -12,10 +12,8 @@ export default function Bio() {
 
   const bio = data?.bio?.[language] ?? data?.bio?.es ?? data?.bio?.en ?? null;
 
-  console.log(data);
   return (
     <>
-      <h1 className="my-4">Bio</h1>
       <div className="max-w-prose">{bio && <PortableText value={bio} />}</div>
 
       {data?.profileImage && (
