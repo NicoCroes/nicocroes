@@ -2,8 +2,8 @@
 
 @theme {
   --color-rey: oklch(0.2853 0.1242 261.12);
-  --color-oro: oklch(0.8125 0.1698 76.25);
   --color-silver: oklch(0.8078 0 0);
+  --color-silver-light: oklch(0.93 0 0);
 }
 
 :root {
