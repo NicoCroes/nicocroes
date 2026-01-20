@@ -9,6 +9,7 @@ import Bio from "./pages/Bio";
 import LaguageToggle from "./components/LanguageToggle";
 import NavMenu from "./components/NavMenu";
 import useLanguage from "./hooks/useLanguage";
+import Footer from "./components/Footer";
 
 function App() {
   const { data, isLoading, error } = useGeneralData();
@@ -47,6 +48,7 @@ function App() {
           </Routes>
         </AnimatePresence>
       </div>
+      <Footer />
     </div>
   );
 }
