@@ -1,7 +1,9 @@
 import { useColorWorksList } from "../hooks/useData";
 import useLanguage from "../hooks/useLanguage";
 import { useGeneralData } from "../hooks/useData";
-import ColorWorksGrid from "../components/ColorWorksGrid";
+import WorksGrid from "../components/WorksGrid";
+import { motion } from "motion/react";
+import SectionContainer from "../components/SectionContainer";
 
 export default function Works() {
   const {
@@ -23,9 +25,18 @@ export default function Works() {
     null;
 
   return (
-    <>
-      <h1 className="py-4">{title}</h1>
-      {data?.length && <ColorWorksGrid data={data} />}
-    </>
+    <SectionContainer>
+      <div className="mb-12 flex w-full items-center justify-start">
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="bg-linear-to-r from-teal-500 via-orange-500 to-yellow-500 bg-clip-text text-5xl font-thin text-transparent uppercase sm:text-6xl"
+        >
+          {title}
+        </motion.h1>
+      </div>
+      {data?.length && <WorksGrid data={data} />}
+    </SectionContainer>
   );
 }

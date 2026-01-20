@@ -1,6 +1,7 @@
 import { useDpWorksList } from "../hooks/useData";
 import VideoHeader from "../components/VideoHeader";
-import DpWorksGrid from "../components/DpWorksGrid";
+import WorksGrid from "../components/WorksGrid";
+import SectionContainer from "../components/SectionContainer";
 
 export default function Works() {
   const { data, isLoading, error } = useDpWorksList();
@@ -9,9 +10,11 @@ export default function Works() {
   if (error) return <div>{error.message}</div>;
 
   return (
-    <section className="flex w-full flex-col items-center gap-8">
-      <VideoHeader />
-      {data?.length && <DpWorksGrid data={data} />}
-    </section>
+    <SectionContainer>
+      <div className="flex w-full flex-col items-center gap-16 pt-2">
+        <VideoHeader />
+        {data?.length && <WorksGrid data={data} />}
+      </div>
+    </SectionContainer>
   );
 }
