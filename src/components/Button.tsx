@@ -4,17 +4,16 @@ import { motion } from "motion/react";
 type ButtonProps = {
   children: ReactNode;
   handleClick?: () => void;
+  border: boolean;
 };
 
-export default function Button({ children, handleClick }: ButtonProps) {
+export default function Button({ children, handleClick, border }: ButtonProps) {
   return (
     <motion.button
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.975 }}
-      className="border-rey/10 cursor-pointer self-start rounded-xs border bg-white/40 px-2 font-light lowercase shadow-xs sm:self-auto"
+      className={`${border ? "border-rey/20 border" : ""} _shadow-xs _bg-white/90 _hover:text-silver sm:hover:bg-silver-light cursor-pointer self-start rounded bg-white px-2 font-light uppercase transition-colors sm:self-auto`}
       onClick={handleClick}
     >
       {children}
