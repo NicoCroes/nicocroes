@@ -6,7 +6,7 @@ export default function NavMenu() {
 
   return (
     <div className="from-white/00 pointer-events-none fixed bottom-0 z-10 flex w-full justify-center bg-linear-to-b to-white/60 pb-4 md:top-2 md:bottom-auto md:bg-none">
-      <ul className="pointer-events-auto flex gap-4 text-xl font-light sm:gap-8">
+      <ul className="pointer-events-auto flex gap-4 sm:gap-8">
         <li>
           <MyNavLink to="/">
             {language === "es" ? "Trabajos" : "Works"}

@@ -18,14 +18,12 @@ function App() {
   if (error) return <div>{error.message}</div>;
 
   return (
-    <div className="text-rey">
+    <div className="text-rey text-xl font-light">
       <div className="to-silver fixed inset-0 -z-10 h-screen bg-linear-to-b from-[white]" />
 
-      <header className="to-white/00 sticky top-0 z-10 flex h-18 items-start justify-between bg-linear-to-b from-white/60 px-4 py-2 text-xl">
+      <header className="to-white/00 sticky top-0 z-10 flex h-18 items-start justify-between bg-linear-to-b from-white/60 px-4 py-2">
         <div>
-          <h1 className="text-xl font-light uppercase">
-            {data?.name && data.name}
-          </h1>
+          <h1 className="uppercase">{data?.name && data.name}</h1>
         </div>
         <div className="justify-self-end">
           <LaguageToggle />

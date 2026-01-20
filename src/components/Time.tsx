@@ -11,7 +11,7 @@ export default function Time() {
 
   return (
     <>
-      <div className="bg-silver/80 font-light">{time.toLocaleTimeString()}</div>
+      <div className="bg-silver/80">{time.toLocaleTimeString()}</div>
     </>
   );
 }

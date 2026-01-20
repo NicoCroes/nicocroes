@@ -38,7 +38,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
         )}
       </AnimatePresence>
 
-      <div className="columns-1 gap-8 pt-4 transition-all duration-300 sm:columns-2 md:columns-3 md:px-4 xl:columns-4 2xl:columns-5">
+      <div className="columns-1 gap-8 pt-4 transition-all duration-300 sm:columns-2 md:columns-3 xl:columns-4 2xl:columns-5">
         {images.map((image) => (
           <motion.div
             key={image._key}

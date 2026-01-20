@@ -13,7 +13,7 @@ export default function Button({ children, handleClick, border }: ButtonProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className={`${border ? "border-rey/20 border" : ""} _shadow-xs _bg-white/90 _hover:text-silver sm:hover:bg-silver-light cursor-pointer self-start rounded bg-white px-2 font-light uppercase transition-colors sm:self-auto`}
+      className={`${border ? "border-rey/20 border" : ""} sm:hover:bg-silver-light cursor-pointer self-start rounded bg-white px-2 uppercase transition-colors sm:self-auto`}
       onClick={handleClick}
     >
       {children}

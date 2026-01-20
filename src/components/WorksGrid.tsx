@@ -33,7 +33,7 @@ export default function DpWorksGrid({ data }: DpWorksGidType) {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="rounded-r-xs bg-white/80 px-2 text-sm font-light uppercase"
+                        className="rounded-r-xs bg-white/80 px-2 text-sm uppercase"
                       >
                         {work?.title?.[language] ||
                           work?.title?.es ||

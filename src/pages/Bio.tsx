@@ -28,7 +28,7 @@ export default function Bio() {
           </div>
         )}
         <div className="">
-          <p className="max-w-prose text-lg font-light">
+          <p className="max-w-prose text-lg">
             {bio && <PortableText value={bio} components={components} />}
           </p>
 
