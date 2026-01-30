@@ -15,7 +15,7 @@ export default function DpWorksGrid({ data }: DpWorksGidType) {
 
   return (
     <div
-      className={`${data?.length < 3 ? "grid-cols-1 sm:grid-cols-3" : "grid-cols-2 sm:grid-cols-4"} _sm:grid-cols-4 grid gap-4`}
+      className={`${data?.length < 3 ? "grid-cols-1 sm:grid-cols-3" : "grid-cols-2 sm:grid-cols-4"} grid gap-4 items-center`}
     >
       {data?.length &&
         data.map((work) => (
