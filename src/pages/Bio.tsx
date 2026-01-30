@@ -5,6 +5,7 @@ import { useBlockContentComponents } from "../components/BlockContent";
 import { urlFor } from "../lib/sanityImageUrl";
 import LinkButton from "../components/LinkButton";
 import SectionContainer from "../components/SectionContainer";
+import { motion } from "motion/react"
 
 export default function Bio() {
   const { data, isLoading, error } = useGeneralData();
@@ -20,10 +21,12 @@ export default function Bio() {
     <SectionContainer>
       <div className="flex grow flex-col items-center justify-center gap-8 pb-18 md:flex-row">
         {data?.profileImage && (
-          <div>
-            <img
+          <div className="w-100 bg-rey rounded-2xl h-150">
+            <motion.img
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               className="h-auto w-100 rounded-2xl"
-              src={urlFor(data.profileImage).format("webp").width(400).url()}
+              src={urlFor(data.profileImage).format("webp").width(400).height(600).url()}
             />
           </div>
         )}
