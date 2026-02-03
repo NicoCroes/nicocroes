@@ -88,19 +88,27 @@ export default function DpWorkPage() {
             </div>
           )}
         </div>
-        <div className="bottom-2 z-100 mt-16 mb-24 flex w-full justify-center gap-12 sm:fixed sm:mb-0">
-          {nextWork && (
-            <NavLink to={`/dp/${prevWork?.slug?.current}`}>
-              {language === "es" ? "anterior" : "previous"}
-            </NavLink>
-          )}
-          <NavLink to="/">index</NavLink>
 
-          {nextWork && (
-            <NavLink to={`/dp/${nextWork?.slug?.current}`}>
-              {language === "es" ? "siguiente" : "next"}
-            </NavLink>
-          )}
+        {/* TODO: exclude from animated transition */}
+        <div>
+          <div className="fixed right-4 bottom-2">
+            {currentIndex + 1}/{worksList?.length}
+          </div>
+
+          <div className="bottom-2 z-100 mt-16 mb-24 flex w-full justify-center gap-12 sm:fixed sm:mb-0">
+            {nextWork && (
+              <NavLink to={`/dp/${prevWork?.slug?.current}`}>
+                {language === "es" ? "anterior" : "previous"}
+              </NavLink>
+            )}
+            <NavLink to="/">index</NavLink>
+
+            {nextWork && (
+              <NavLink to={`/dp/${nextWork?.slug?.current}`}>
+                {language === "es" ? "siguiente" : "next"}
+              </NavLink>
+            )}
+          </div>
         </div>
       </div>
     </SectionContainer>
