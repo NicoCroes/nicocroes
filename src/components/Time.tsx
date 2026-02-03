@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 
 export default function Time() {
   const [time, setTime] = useState(new Date());
@@ -11,7 +12,18 @@ export default function Time() {
 
   return (
     <>
-      <div className="bg-silver/80">{time.toLocaleTimeString()}</div>
+      <AnimatePresence mode="wait">
+        {location.pathname.split("/").length < 3 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="bg-silver/80"
+          >
+            {time.toLocaleTimeString()}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
