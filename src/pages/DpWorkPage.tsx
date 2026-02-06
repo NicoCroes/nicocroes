@@ -68,7 +68,7 @@ export default function DpWorkPage() {
             <PortableText value={additionaInfo} />
           </p>
         )}
-        <div className="_grid _grid-cols-1 _sm:grid-cols-2 _items-center my-6 mb-16 w-full gap-4">
+        <div className="my-6 mb-16 w-full gap-4">
           {work?.images?.length && (
             <ImageGallery images={work?.images ?? work.images} />
           )}
@@ -90,7 +90,6 @@ export default function DpWorkPage() {
           )}
         </div>
 
-        {/* TODO: exclude from animated transition */}
         <div className="mt-auto mb-24 grid w-full grid-cols-1 text-base uppercase sm:mb-2 sm:grid-cols-3 sm:text-xl">
           <div className="flex w-full grid-cols-3 justify-between gap-12 px-2 text-center sm:col-start-2 sm:mb-0 sm:grid">
             {nextWork && (
@@ -108,10 +107,10 @@ export default function DpWorkPage() {
               </NavLink>
             )}
           </div>
+        </div>
 
-          <div className="hidden justify-self-end sm:block">
-            {currentIndex + 1}/{worksList?.length}
-          </div>
+        <div className="fixed right-2 bottom-2 hidden justify-self-end rounded bg-white/40 px-2 backdrop-blur-xl sm:block">
+          {currentIndex + 1}/{worksList?.length}
         </div>
       </div>
     </SectionContainer>

@@ -18,7 +18,7 @@ export default function Time() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="bg-silver/80"
+            className="rounded bg-white/40 px-2 backdrop-blur-xl"
           >
             {time.toLocaleTimeString()}
           </motion.div>

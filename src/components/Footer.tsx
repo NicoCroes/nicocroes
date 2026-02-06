@@ -6,7 +6,7 @@ export default function Footer() {
 
   if (mobile) return null;
   return (
-    <footer className="fixed bottom-2 flex w-full justify-end px-4">
+    <footer className="fixed bottom-2 flex w-full justify-end px-2">
       <Time />
     </footer>
   );

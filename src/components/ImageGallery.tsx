@@ -21,7 +21,7 @@ interface ImageGalleryProps {
 export default function ImageGallery({ images }: ImageGalleryProps) {
   return (
     <>
-      <div className="_sm:columns-2 w-full columns-1 gap-4 pt-4 transition-all duration-300">
+      <div className="w-full columns-1 gap-4 pt-4 transition-all duration-300">
         {images.map((image) => {
           return (
             <motion.div

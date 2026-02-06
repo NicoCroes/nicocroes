@@ -5,8 +5,8 @@ export default function NavMenu() {
   const { language } = useLanguage();
 
   return (
-    <div className="from-white/00 pointer-events-none fixed bottom-0 z-10 flex w-full justify-center bg-linear-to-b to-white/60 pb-4 md:top-2 md:bottom-auto md:bg-none">
-      <ul className="pointer-events-auto flex gap-4 sm:gap-8">
+    <div className="pointer-events-none fixed bottom-0 z-10 flex w-full justify-center pb-4 md:top-2 md:bottom-auto md:bg-none">
+      <ul className="pointer-events-auto grid grid-cols-3 gap-4 text-base sm:text-xl">
         <li>
           <MyNavLink to="/">
             {language === "es" ? "Trabajos" : "Works"}

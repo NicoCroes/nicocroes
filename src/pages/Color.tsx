@@ -26,12 +26,12 @@ export default function Works() {
 
   return (
     <SectionContainer>
-      <div className="mb-12 flex w-full items-center justify-start">
+      <div className="mb-12 flex w-full items-center justify-center sm:justify-start">
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="bg-linear-to-r from-teal-500 via-orange-500 to-yellow-500 bg-clip-text text-5xl font-thin text-transparent uppercase sm:text-6xl"
+          className="bg-linear-to-r from-teal-500 via-orange-500 to-yellow-500 bg-clip-text px-4 text-5xl font-thin text-transparent uppercase sm:text-6xl"
         >
           {title}
         </motion.h1>

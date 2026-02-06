@@ -11,8 +11,9 @@ export default function Works() {
 
   return (
     <SectionContainer>
-      <div className="flex w-full flex-col items-center gap-16 pt-2">
+      <div className="flex w-full flex-col items-center gap-8 pt-2 sm:gap-16">
         <VideoHeader />
+        <div className="bg-rey h-0.75 w-4 origin-center rounded-2xl" />
         {data?.length && <WorksGrid data={data} />}
       </div>
     </SectionContainer>

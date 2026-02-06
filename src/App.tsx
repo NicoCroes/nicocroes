@@ -21,9 +21,11 @@ function App() {
     <div className="text-rey text-xl font-light">
       <div className="to-silver fixed inset-0 -z-10 h-screen bg-linear-to-b from-[white]" />
 
-      <header className="to-white/00 sticky top-0 z-10 flex h-18 items-start justify-between bg-linear-to-b from-white/60 px-4 py-2">
+      <header className="sticky top-0 z-10 flex h-12 items-start justify-between px-2 py-2 sm:h-18">
         <div>
-          <h1 className="uppercase">{data?.name && data.name}</h1>
+          <h1 className="rounded bg-white/40 px-2 uppercase backdrop-blur-xl">
+            {data?.name && data.name}
+          </h1>
         </div>
         <div className="justify-self-end">
           <LaguageToggle />
