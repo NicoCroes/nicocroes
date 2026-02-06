@@ -43,31 +43,32 @@ export default function DpWorkPage() {
 
   return (
     <SectionContainer>
-      <div className="flex w-full flex-col items-start">
-        <h1 className="">
+      <div className="flex h-full w-full grow flex-col items-start">
+        <h1 className="text-5xl">
           {work?.title?.[language] || work?.title?.es || work?.title?.en}
         </h1>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {work?.director && <h2>{work.director}</h2>}
           {work?.production && (
-            <h2 className="flex items-baseline gap-2">
-              <div className="bg-rey h-px w-4 origin-center rounded-2xl" />
+            <h2 className="flex items-center gap-3">
+              <div className="bg-rey h-1 w-1 origin-center rounded-2xl" />
               {work?.production}
             </h2>
           )}
           {work?.client && (
-            <h2 className="flex items-baseline gap-2">
-              <div className="bg-rey h-px w-4 origin-center rounded-2xl" />
+            <h2 className="flex items-center gap-3">
+              <div className="bg-rey h-1 w-1 origin-center rounded-2xl" />
               {work?.client}
             </h2>
           )}
         </div>
         {additionaInfo && (
-          <p className="text-lg">
+          <p className="mt-4 text-base">
+            {/* TODO: armar componente para estilizar link */}
             <PortableText value={additionaInfo} />
           </p>
         )}
-        <div className="my-6 grid grid-cols-1 items-center gap-4 sm:grid-cols-2">
+        <div className="_grid _grid-cols-1 _sm:grid-cols-2 _items-center my-6 mb-16 w-full gap-4">
           {work?.images?.length && (
             <ImageGallery images={work?.images ?? work.images} />
           )}
@@ -90,24 +91,26 @@ export default function DpWorkPage() {
         </div>
 
         {/* TODO: exclude from animated transition */}
-        <div>
-          <div className="fixed right-4 bottom-2">
-            {currentIndex + 1}/{worksList?.length}
-          </div>
-
-          <div className="bottom-2 z-100 mt-16 mb-24 flex w-full justify-center gap-12 sm:fixed sm:mb-0">
+        <div className="mt-auto mb-24 grid w-full grid-cols-1 text-base uppercase sm:mb-2 sm:grid-cols-3 sm:text-xl">
+          <div className="flex w-full grid-cols-3 justify-between gap-12 px-2 text-center sm:col-start-2 sm:mb-0 sm:grid">
             {nextWork && (
               <NavLink to={`/dp/${prevWork?.slug?.current}`}>
                 {language === "es" ? "anterior" : "previous"}
               </NavLink>
             )}
-            <NavLink to="/">index</NavLink>
+            <NavLink to="/" className="hidden sm:block">
+              index
+            </NavLink>
 
             {nextWork && (
               <NavLink to={`/dp/${nextWork?.slug?.current}`}>
                 {language === "es" ? "siguiente" : "next"}
               </NavLink>
             )}
+          </div>
+
+          <div className="hidden justify-self-end sm:block">
+            {currentIndex + 1}/{worksList?.length}
           </div>
         </div>
       </div>
