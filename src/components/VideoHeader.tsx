@@ -1,5 +1,4 @@
 import { useGeneralData } from "../hooks/useData";
-import { urlFor } from "../lib/sanityImageUrl";
 import VimeoEmbedPlayer from "./VimeoEmbedPlayer";
 
 export default function VideoHeader() {
@@ -18,10 +17,6 @@ export default function VideoHeader() {
             autoplay={1}
             controls={0}
             loop={1}
-            previewImage={
-              data.coverThumbnail &&
-              urlFor(data.coverThumbnail).format("webp").width(800).url()
-            }
             uiColor="0c2e62"
           />
         )}
