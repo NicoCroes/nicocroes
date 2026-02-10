@@ -2,14 +2,18 @@ import { useState } from "react";
 import { NavLink } from "react-router";
 import { urlFor } from "../lib/sanityImageUrl";
 import useLanguage from "../hooks/useLanguage";
-import type { DpWorksListQueryResult } from "../lib/types";
+import type {
+  DpWorksListQueryResult,
+  ColorWorksListQueryResult,
+} from "../lib/types";
 import { motion, AnimatePresence } from "motion/react";
 
-interface DpWorksGidType {
-  data: DpWorksListQueryResult;
+interface WorksGidType {
+  data: DpWorksListQueryResult | ColorWorksListQueryResult;
+  route: "dp" | "color";
 }
 
-export default function DpWorksGrid({ data }: DpWorksGidType) {
+export default function DpWorksGrid({ data, route }: WorksGidType) {
   const { language } = useLanguage();
   const [hoveredWork, setHoveredWork] = useState<string | null>(null);
 
@@ -19,7 +23,7 @@ export default function DpWorksGrid({ data }: DpWorksGidType) {
     >
       {data?.length &&
         data.map((work) => (
-          <NavLink to={`/dp/${work.slug?.current}`} key={work._id}>
+          <NavLink to={`/${route}/${work.slug?.current}`} key={work._id}>
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}

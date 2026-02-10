@@ -36,7 +36,7 @@ export default function Works() {
           {title}
         </motion.h1>
       </div>
-      {data?.length && <WorksGrid data={data} />}
+      {data?.length && <WorksGrid data={data} route="color" />}
     </SectionContainer>
   );
 }
