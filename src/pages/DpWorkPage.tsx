@@ -98,7 +98,7 @@ export default function DpWorkPage() {
         </div>
 
         <div className="mt-auto mb-24 grid w-full grid-cols-1 text-base uppercase sm:mb-2 sm:grid-cols-3 sm:text-xl">
-          <div className="flex w-full grid-cols-3 justify-between gap-12 px-2 text-center sm:col-start-2 sm:mb-0 sm:grid">
+          <div className="flex w-full grid-cols-3 place-items-center justify-between gap-12 px-2 text-center sm:col-start-2 sm:mb-0 sm:grid">
             {nextWork && (
               <NavLink to={`/dp/${prevWork?.slug?.current}`}>
                 {language === "es" ? "anterior" : "previous"}
