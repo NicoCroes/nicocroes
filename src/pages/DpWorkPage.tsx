@@ -46,20 +46,22 @@ export default function DpWorkPage() {
   return (
     <SectionContainer>
       <div className="flex h-full w-full grow flex-col items-start">
-        <h1 className="text-5xl">
+        <h1 className="text-3xl sm:text-5xl">
           {work?.title?.[language] || work?.title?.es || work?.title?.en}
         </h1>
-        <div className="flex flex-wrap gap-2">
-          {work?.director && <h2>{work.director}</h2>}
+        <div className="flex flex-col text-base sm:flex-row sm:flex-wrap sm:gap-2 sm:text-xl">
+          {work?.director && (
+            <h2 className="flex items-center gap-3">{work.director}</h2>
+          )}
           {work?.production && (
             <h2 className="flex items-center gap-3">
-              <div className="bg-rey h-1 w-1 origin-center rounded-2xl" />
+              <div className="bg-rey hidden h-1 w-1 origin-center rounded-2xl sm:block" />
               {work?.production}
             </h2>
           )}
           {work?.client && (
             <h2 className="flex items-center gap-3">
-              <div className="bg-rey h-1 w-1 origin-center rounded-2xl" />
+              <div className="bg-rey hidden h-1 w-1 origin-center rounded-2xl sm:block" />
               {work?.client}
             </h2>
           )}
