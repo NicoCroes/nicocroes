@@ -2,11 +2,12 @@ import { useDpWorksList } from "../hooks/useData";
 import VideoHeader from "../components/VideoHeader";
 import WorksGrid from "../components/WorksGrid";
 import SectionContainer from "../components/SectionContainer";
+import Loading from "../components/Loading";
 
 export default function Works() {
   const { data, isLoading, error } = useDpWorksList();
 
-  if (isLoading) return <div>...</div>;
+  if (isLoading) return <Loading />;
   if (error) return <div>{error.message}</div>;
 
   return (

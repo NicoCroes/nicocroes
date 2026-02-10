@@ -5,13 +5,14 @@ import { PortableText } from "@portabletext/react";
 import VimeoEmbedPlayer from "../components/VimeoEmbedPlayer";
 import { urlFor } from "../lib/sanityImageUrl";
 import ImageGallery from "../components/ImageGallery";
+import Loading from "../components/Loading";
 
 export default function ColorWorkPage() {
   const { slug } = useParams<{ slug: string }>();
   const { data: work, isLoading, error } = useColorWork(slug!);
   const { language } = useLanguage();
 
-  if (isLoading) return <div>...</div>;
+  if (isLoading) return <Loading />;
   if (error) return <div>{error.message}</div>;
 
   const additionaInfo =

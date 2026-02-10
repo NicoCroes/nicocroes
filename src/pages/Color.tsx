@@ -4,6 +4,7 @@ import { useGeneralData } from "../hooks/useData";
 import WorksGrid from "../components/WorksGrid";
 import { motion } from "motion/react";
 import SectionContainer from "../components/SectionContainer";
+import Loading from "../components/Loading";
 
 export default function Works() {
   const {
@@ -14,7 +15,7 @@ export default function Works() {
   const { data, isLoading, error } = useColorWorksList();
   const { language } = useLanguage();
 
-  if (isLoading || isGeneralDataLoading) return <div>...</div>;
+  if (isLoading || isGeneralDataLoading) return <Loading />;
   if (error || generalDataError)
     return <div>{error?.message || generalDataError?.message}</div>;
 

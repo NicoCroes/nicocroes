@@ -8,6 +8,7 @@ import { urlFor } from "../lib/sanityImageUrl";
 import ImageGallery from "../components/ImageGallery";
 import SectionContainer from "../components/SectionContainer";
 import { PortableTextComponent } from "../components/PortableTextComponent";
+import Loading from "../components/Loading";
 
 export default function DpWorkPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -19,7 +20,7 @@ export default function DpWorkPage() {
   } = useDpWorksList();
   const { language } = useLanguage();
 
-  if (isLoading || isWorksListLoading) return <div>...</div>;
+  if (isLoading || isWorksListLoading) return <Loading />;
   if (error || worksListError)
     return <div>{error?.message || worksListError?.message}</div>;
 

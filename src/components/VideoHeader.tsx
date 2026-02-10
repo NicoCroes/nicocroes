@@ -4,7 +4,7 @@ import VimeoEmbedPlayer from "./VimeoEmbedPlayer";
 export default function VideoHeader() {
   const { data, isLoading, error } = useGeneralData();
 
-  if (isLoading) return <div>...</div>;
+  if (isLoading) return null;
   if (error) return <div>{error.message}</div>;
 
   return (

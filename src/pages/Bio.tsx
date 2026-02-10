@@ -6,13 +6,14 @@ import { urlFor } from "../lib/sanityImageUrl";
 import LinkButton from "../components/LinkButton";
 import SectionContainer from "../components/SectionContainer";
 import { motion } from "motion/react";
+import Loading from "../components/Loading";
 
 export default function Bio() {
   const { data, isLoading, error } = useGeneralData();
   const { language } = useLanguage();
   const components = useBlockContentComponents();
 
-  if (isLoading) return <div>...</div>;
+  if (isLoading) return <Loading />;
   if (error) return <div>{error.message}</div>;
 
   const bio = data?.bio?.[language] ?? data?.bio?.es ?? data?.bio?.en ?? null;
