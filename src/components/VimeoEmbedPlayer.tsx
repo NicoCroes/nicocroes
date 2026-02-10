@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getVimeoId } from "../utils/getVimeoId";
 
 interface VimeoPlayerProps {
@@ -27,6 +27,7 @@ export default function VimeoPlayer({
 }: VimeoPlayerProps) {
   const { id: vimeoId, hash: vimeoHash } = getVimeoId(embedCode);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const adjustIframeSize = () => {
@@ -87,17 +88,23 @@ export default function VimeoPlayer({
       />
     </div>
   ) : (
-    <div className="relative">
-      {previewImage && (
-        <div className="absolute inset-0 -z-10">
-          <img src={previewImage} className="h-full w-full rounded-2xl" />
-        </div>
-      )}
+    <div className="relative aspect-video w-full overflow-hidden rounded-2xl">
       <iframe
-        className="aspect-video h-full w-full rounded-2xl"
+        className={`h-full w-full transition-opacity duration-700 ${
+          loaded ? "opacity-100" : "opacity-0"
+        }`}
         src={src}
+        onLoad={() => setLoaded(true)}
         allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
       />
+
+      {previewImage && (
+        <img
+          src={previewImage}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${loaded ? "pointer-events-none opacity-0" : "opacity-100"}`}
+          alt=""
+        />
+      )}
     </div>
   );
 }
