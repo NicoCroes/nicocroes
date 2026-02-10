@@ -7,6 +7,7 @@ import VimeoEmbedPlayer from "../components/VimeoEmbedPlayer";
 import { urlFor } from "../lib/sanityImageUrl";
 import ImageGallery from "../components/ImageGallery";
 import SectionContainer from "../components/SectionContainer";
+import { PortableTextComponent } from "../components/PortableTextComponent";
 
 export default function DpWorkPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -65,7 +66,10 @@ export default function DpWorkPage() {
         {additionaInfo && (
           <p className="mt-4 text-base">
             {/* TODO: armar componente para estilizar link */}
-            <PortableText value={additionaInfo} />
+            <PortableText
+              value={additionaInfo}
+              components={PortableTextComponent}
+            />
           </p>
         )}
         <div className="my-6 mb-16 w-full gap-4">
