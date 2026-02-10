@@ -2,11 +2,11 @@ import { useGeneralData } from "../hooks/useData";
 import { PortableText } from "@portabletext/react";
 import useLanguage from "../hooks/useLanguage";
 import { useBlockContentComponents } from "../components/BlockContent";
-import { urlFor } from "../lib/sanityImageUrl";
 import LinkButton from "../components/LinkButton";
 import SectionContainer from "../components/SectionContainer";
 import { motion } from "motion/react";
 import Loading from "../components/Loading";
+import Image from "../components/Image";
 
 export default function Bio() {
   const { data, isLoading, error } = useGeneralData();
@@ -23,16 +23,17 @@ export default function Bio() {
       <div className="flex grow items-center justify-center pb-18">
         <div className="flex flex-col items-center justify-center gap-8 md:flex-row md:items-start">
           {data?.profileImage && (
-            <motion.img
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="h-auto w-100 rounded-2xl"
-              src={urlFor(data.profileImage)
-                .format("webp")
-                .width(400)
-                .height(600)
-                .url()}
-            />
+              className="w-full rounded-2xl sm:w-100"
+            >
+              <Image
+                imageData={data.profileImage}
+                width={400}
+                aspectRatio="0.666"
+              />
+            </motion.div>
           )}
           <div className="">
             <div className="max-w-prose text-lg">
