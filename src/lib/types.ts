@@ -13,6 +13,13 @@
  */
 
 // Source: schema.json
+export type SanityImageAssetReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+};
+
 export type ColorWork = {
   _id: string;
   _type: "colorWork";
@@ -29,12 +36,7 @@ export type ColorWork = {
   director?: string;
   production?: string;
   mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -42,12 +44,7 @@ export type ColorWork = {
   };
   vimeoEmbed?: string;
   images?: Array<{
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -117,12 +114,7 @@ export type DpWork = {
   director?: string;
   production?: string;
   mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -130,12 +122,7 @@ export type DpWork = {
   };
   vimeoEmbed?: string;
   images?: Array<{
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -160,18 +147,6 @@ export type GeneralData = {
     en?: string;
   };
   coverVideo?: string;
-  coverThumbnail?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
   colorTitle?: {
     es?: string;
     en?: string;
@@ -181,12 +156,7 @@ export type GeneralData = {
     en?: BlockContent;
   };
   profileImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -233,6 +203,7 @@ export type SanityImageMetadata = {
   palette?: SanityImagePalette;
   lqip?: string;
   blurHash?: string;
+  thumbHash?: string;
   hasAlpha?: boolean;
   isOpaque?: boolean;
 };
@@ -296,11 +267,13 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes = ColorWork | BlockContent | SanityImageCrop | SanityImageHotspot | Slug | DpWork | GeneralData | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+export type AllSanitySchemaTypes = SanityImageAssetReference | ColorWork | BlockContent | SanityImageCrop | SanityImageHotspot | Slug | DpWork | GeneralData | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+
 export declare const internalGroqTypeReferenceTo: unique symbol;
+
 // Source: ../nicocroes/src/lib/dataQueries.ts
 // Variable: generalDataQuery
-// Query: *[_type == "generalData"][0]{    name,    detail,    coverVideo,    coverThumbnail,    colorTitle,    bio,    profileImage,    links  }
+// Query: *[_type == "generalData"][0]{    name,    detail,    coverVideo,    colorTitle,    bio,    profileImage,    links  }
 export type GeneralDataQueryResult = {
   name: string | null;
   detail: {
@@ -308,18 +281,6 @@ export type GeneralDataQueryResult = {
     en?: string;
   } | null;
   coverVideo: string | null;
-  coverThumbnail: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  } | null;
   colorTitle: {
     es?: string;
     en?: string;
@@ -329,12 +290,7 @@ export type GeneralDataQueryResult = {
     en?: BlockContent;
   } | null;
   profileImage: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -347,6 +303,8 @@ export type GeneralDataQueryResult = {
     _key: string;
   }> | null;
 } | null;
+
+// Source: ../nicocroes/src/lib/dataQueries.ts
 // Variable: dpWorksListQuery
 // Query: *[_type == "dpWork"] | order(date desc){    _id,    title,    slug,    date,    client,    director,    production,    mainImage,  }
 export type DpWorksListQueryResult = Array<{
@@ -361,18 +319,15 @@ export type DpWorksListQueryResult = Array<{
   director: string | null;
   production: string | null;
   mainImage: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
 }>;
+
+// Source: ../nicocroes/src/lib/dataQueries.ts
 // Variable: dpWorkBySlugQuery
 // Query: *[_type == "dpWork" && slug.current == $slug][0]{    _id,    title,    slug,    date,    client,    director,    production,    mainImage,    vimeoEmbed,    images[]{      _key,       asset,      "dimensions": asset->metadata.dimensions,    },    additionalInfo,  }
 export type DpWorkBySlugQueryResult = {
@@ -387,12 +342,7 @@ export type DpWorkBySlugQueryResult = {
   director: string | null;
   production: string | null;
   mainImage: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -401,12 +351,7 @@ export type DpWorkBySlugQueryResult = {
   vimeoEmbed: string | null;
   images: Array<{
     _key: string;
-    asset: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    } | null;
+    asset: SanityImageAssetReference | null;
     dimensions: SanityImageDimensions | null;
   }> | null;
   additionalInfo: {
@@ -414,6 +359,8 @@ export type DpWorkBySlugQueryResult = {
     en?: BlockContent;
   } | null;
 } | null;
+
+// Source: ../nicocroes/src/lib/dataQueries.ts
 // Variable: colorWorksListQuery
 // Query: *[_type == "colorWork"] | order(date desc){    _id,    title,    slug,    date,    client,    director,    production,    mainImage,  }
 export type ColorWorksListQueryResult = Array<{
@@ -428,18 +375,15 @@ export type ColorWorksListQueryResult = Array<{
   director: string | null;
   production: string | null;
   mainImage: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
 }>;
+
+// Source: ../nicocroes/src/lib/dataQueries.ts
 // Variable: colorWorkBySlugQuery
 // Query: *[_type == "colorWork" && slug.current == $slug][0]{    _id,    title,    slug,    date,    client,    director,    production,    mainImage,    vimeoEmbed,    images[]{      _key,       asset,      "dimensions": asset->metadata.dimensions,    },    additionalInfo,  }
 export type ColorWorkBySlugQueryResult = {
@@ -454,12 +398,7 @@ export type ColorWorkBySlugQueryResult = {
   director: string | null;
   production: string | null;
   mainImage: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -468,12 +407,7 @@ export type ColorWorkBySlugQueryResult = {
   vimeoEmbed: string | null;
   images: Array<{
     _key: string;
-    asset: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    } | null;
+    asset: SanityImageAssetReference | null;
     dimensions: SanityImageDimensions | null;
   }> | null;
   additionalInfo: {
@@ -486,10 +420,11 @@ export type ColorWorkBySlugQueryResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n  *[_type == \"generalData\"][0]{\n    name,\n    detail,\n    coverVideo,\n    coverThumbnail,\n    colorTitle,\n    bio,\n    profileImage,\n    links\n  }": GeneralDataQueryResult;
+    "\n  *[_type == \"generalData\"][0]{\n    name,\n    detail,\n    coverVideo,\n    colorTitle,\n    bio,\n    profileImage,\n    links\n  }": GeneralDataQueryResult;
     "\n  *[_type == \"dpWork\"] | order(date desc){\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n  }": DpWorksListQueryResult;
     "\n  *[_type == \"dpWork\" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n    vimeoEmbed,\n    images[]{\n      _key, \n      asset,\n      \"dimensions\": asset->metadata.dimensions,\n    },\n    additionalInfo,\n  }": DpWorkBySlugQueryResult;
     "\n  *[_type == \"colorWork\"] | order(date desc){\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n  }": ColorWorksListQueryResult;
     "\n  *[_type == \"colorWork\" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n    vimeoEmbed,\n    images[]{\n      _key, \n      asset,\n      \"dimensions\": asset->metadata.dimensions,\n    },\n    additionalInfo,\n  }": ColorWorkBySlugQueryResult;
   }
 }
+
