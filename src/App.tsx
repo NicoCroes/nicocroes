@@ -26,13 +26,13 @@ function App() {
     >
       <div className="to-silver fixed inset-0 -z-10 h-screen bg-linear-to-b from-[white]" />
 
-      <header className="sticky top-0 z-10 flex h-12 items-start justify-between px-2 py-2 sm:h-18">
-        <div>
+      <header className="pointer-events-none sticky top-0 z-10 flex h-12 items-start justify-between px-2 py-2 sm:h-18">
+        <div className="pointer-events-auto">
           <h1 className="rounded bg-white/40 px-2 uppercase backdrop-blur-xl">
             {data?.name && data.name}
           </h1>
         </div>
-        <div className="justify-self-end">
+        <div className="pointer-events-auto justify-self-end">
           <LaguageToggle />
         </div>
       </header>
