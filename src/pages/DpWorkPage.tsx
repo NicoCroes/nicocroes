@@ -68,7 +68,6 @@ export default function DpWorkPage() {
         </div>
         {additionaInfo && (
           <p className="mt-4 text-base">
-            {/* TODO: armar componente para estilizar link */}
             <PortableText
               value={additionaInfo}
               components={PortableTextComponent}
@@ -76,9 +75,6 @@ export default function DpWorkPage() {
           </p>
         )}
         <div className="my-6 mb-16 w-full gap-4">
-          {work?.images?.length && (
-            <ImageGallery images={work?.images ?? work.images} />
-          )}
           {work?.vimeoEmbed && (
             <div className="w-full">
               <VimeoEmbedPlayer
@@ -94,6 +90,9 @@ export default function DpWorkPage() {
                 uiColor="0c2e62"
               />
             </div>
+          )}
+          {work?.images?.length && (
+            <ImageGallery images={work?.images ?? work.images} />
           )}
         </div>
 
