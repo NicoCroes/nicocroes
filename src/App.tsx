@@ -38,7 +38,7 @@ function App() {
       </header>
       <NavMenu />
 
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Works />} />
           <Route path="/dp/:slug" element={<DpWorkPage />} />
