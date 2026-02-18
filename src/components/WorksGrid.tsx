@@ -10,12 +10,13 @@ import { motion, AnimatePresence } from "motion/react";
 
 interface WorksGidType {
   data: DpWorksListQueryResult | ColorWorksListQueryResult;
-  route: "dp" | "color";
 }
 
-export default function DpWorksGrid({ data, route }: WorksGidType) {
+export default function DpWorksGrid({ data }: WorksGidType) {
   const { language } = useLanguage();
   const [hoveredWork, setHoveredWork] = useState<string | null>(null);
+
+  const route = "dp";
 
   return (
     <div

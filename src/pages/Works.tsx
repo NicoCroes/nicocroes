@@ -20,7 +20,7 @@ export default function Works() {
           animate={{ scaleX: 1 }}
           className="bg-rey h-0.75 w-4 origin-center rounded-2xl"
         />
-        {data?.length && <WorksGrid data={data} route="dp" />}
+        {data?.length && <WorksGrid data={data} />}
       </div>
     </SectionContainer>
   );
