@@ -7,6 +7,7 @@ const generalDataQuery = defineQuery(`
     detail,
     coverVideo,
     colorTitle,
+    colorInfo,
     bio,
     profileImage,
     links

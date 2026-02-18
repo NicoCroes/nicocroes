@@ -151,6 +151,10 @@ export type GeneralData = {
     es?: string;
     en?: string;
   };
+  colorInfo?: {
+    es?: string;
+    en?: string;
+  };
   bio?: {
     es?: BlockContent;
     en?: BlockContent;
@@ -273,7 +277,7 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: ../nicocroes/src/lib/dataQueries.ts
 // Variable: generalDataQuery
-// Query: *[_type == "generalData"][0]{    name,    detail,    coverVideo,    colorTitle,    bio,    profileImage,    links  }
+// Query: *[_type == "generalData"][0]{    name,    detail,    coverVideo,    colorTitle,    colorInfo,    bio,    profileImage,    links  }
 export type GeneralDataQueryResult = {
   name: string | null;
   detail: {
@@ -282,6 +286,10 @@ export type GeneralDataQueryResult = {
   } | null;
   coverVideo: string | null;
   colorTitle: {
+    es?: string;
+    en?: string;
+  } | null;
+  colorInfo: {
     es?: string;
     en?: string;
   } | null;
@@ -420,7 +428,7 @@ export type ColorWorkBySlugQueryResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n  *[_type == \"generalData\"][0]{\n    name,\n    detail,\n    coverVideo,\n    colorTitle,\n    bio,\n    profileImage,\n    links\n  }": GeneralDataQueryResult;
+    "\n  *[_type == \"generalData\"][0]{\n    name,\n    detail,\n    coverVideo,\n    colorTitle,\n    colorInfo,\n    bio,\n    profileImage,\n    links\n  }": GeneralDataQueryResult;
     "\n  *[_type == \"dpWork\"] | order(date desc){\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n  }": DpWorksListQueryResult;
     "\n  *[_type == \"dpWork\" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n    vimeoEmbed,\n    images[]{\n      _key, \n      asset,\n      \"dimensions\": asset->metadata.dimensions,\n    },\n    additionalInfo,\n  }": DpWorkBySlugQueryResult;
     "\n  *[_type == \"colorWork\"] | order(date desc){\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n  }": ColorWorksListQueryResult;
