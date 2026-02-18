@@ -14,7 +14,7 @@ body {
 
 body {
   min-height: 100vh;
-  background-image: linear-gradient(to bottom, white, #c0c0c0);
+  background-image: linear-gradient(to bottom, white, #909090);
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
