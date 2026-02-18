@@ -6,6 +6,15 @@ import { BrowserRouter } from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { LangugeProvider } from "./context/LanguageContext.tsx";
 
+const loader = document.getElementById("initial-loader");
+
+if (loader) {
+  loader.classList.add("fade-out");
+
+  setTimeout(() => {
+    loader.remove();
+  }, 500);
+}
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
