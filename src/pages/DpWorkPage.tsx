@@ -96,14 +96,14 @@ export default function DpWorkPage() {
           )}
         </div>
 
-        <div className="mt-auto mb-24 grid w-full grid-cols-1 text-base uppercase sm:mb-2 sm:grid-cols-3 sm:text-xl">
-          <div className="flex w-full grid-cols-3 place-items-center justify-between gap-12 px-2 text-center sm:col-start-2 sm:mb-0 sm:grid">
+        <div className="mt-auto mb-24 grid w-full grid-cols-1 text-base uppercase sm:text-xl md:mb-2 md:grid-cols-3">
+          <div className="flex w-full grid-cols-3 place-items-center justify-between gap-12 px-2 text-center sm:mb-0 md:col-start-2 md:grid">
             {nextWork && (
               <NavLink to={`/dp/${prevWork?.slug?.current}`}>
                 {language === "es" ? "anterior" : "previous"}
               </NavLink>
             )}
-            <NavLink to="/" className="hidden sm:block">
+            <NavLink to="/" className="hidden md:block">
               index
             </NavLink>
 
