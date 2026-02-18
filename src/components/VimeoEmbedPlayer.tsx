@@ -13,7 +13,6 @@ interface VimeoPlayerProps {
   uiColor?: string;
 }
 
-//TODO: add iframe is loaded logic
 export default function VimeoPlayer({
   embedCode,
   autoplay = 0,
@@ -73,7 +72,6 @@ export default function VimeoPlayer({
     };
   }, [vimeoId]);
 
-  //TODO: update ui colors
   const src = `https://player.vimeo.com/video/${vimeoId}?${
     vimeoHash ? `h=${vimeoHash}&` : ""
   }badge=0&autopause=0&player_id=0&app_id=58479&background=${background}&autoplay=${autoplay}&quality=${quality}&loop=${loop}&controls=${controls}&muted=${muted}&byline=false&portrait=false&vimeo_logo=false&pip=false&title=false&like=false&transcript=false&cc=false&color=${uiColor ?? "00f"}`;
