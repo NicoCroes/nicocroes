@@ -66,22 +66,6 @@ const colorWorksListQuery = defineQuery(`
     director,
     production,
     mainImage,
-  }`);
-
-export async function getColorWorksList() {
-  return await client.fetch(colorWorksListQuery);
-}
-
-const colorWorkBySlugQuery = defineQuery(`
-  *[_type == "colorWork" && slug.current == $slug][0]{
-    _id,
-    title,
-    slug,
-    date,
-    client,
-    director,
-    production,
-    mainImage,
     vimeoEmbed,
     images[]{
       _key, 
@@ -91,6 +75,6 @@ const colorWorkBySlugQuery = defineQuery(`
     additionalInfo,
   }`);
 
-export async function getColorWorkBySlug(slug: string) {
-  return await client.fetch(colorWorkBySlugQuery, { slug });
+export async function getColorWorksList() {
+  return await client.fetch(colorWorksListQuery);
 }

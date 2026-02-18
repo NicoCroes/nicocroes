@@ -4,7 +4,6 @@ import {
   getDpWorksList,
   getColorWorksList,
   getDpWorkBySlug,
-  getColorWorkBySlug,
 } from "../lib/dataQueries";
 
 export function useGeneralData() {
@@ -32,14 +31,6 @@ export function useDpWork(slug: string) {
   return useQuery({
     queryKey: ["dpWork", slug],
     queryFn: () => getDpWorkBySlug(slug),
-    enabled: !!slug,
-  });
-}
-
-export function useColorWork(slug: string) {
-  return useQuery({
-    queryKey: ["colorWork", slug],
-    queryFn: () => getColorWorkBySlug(slug),
     enabled: !!slug,
   });
 }

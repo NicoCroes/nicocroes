@@ -1,18 +1,17 @@
-import { useColorWork } from "../hooks/useData";
 import useLanguage from "../hooks/useLanguage";
 import { PortableText } from "@portabletext/react";
 import VimeoEmbedPlayer from "../components/VimeoEmbedPlayer";
 import { urlFor } from "../lib/sanityImageUrl";
 import Carousel from "./Carousel";
-import Loading from "../components/Loading";
 import Image from "../components/Image";
+import type { ColorWorksListQueryResult } from "../lib/types";
 
-export default function ColorWork({ slug }: { slug: string }) {
-  const { data, isLoading, error } = useColorWork(slug!);
+export default function ColorWork({
+  data,
+}: {
+  data: ColorWorksListQueryResult[number];
+}) {
   const { language } = useLanguage();
-
-  if (isLoading) return <Loading />;
-  if (error) return <div>{error.message}</div>;
 
   const additionaInfo =
     data?.additionalInfo?.[language] ??

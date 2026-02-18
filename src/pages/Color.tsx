@@ -48,7 +48,7 @@ export default function Works() {
         <div className="flex flex-col gap-16 pb-16 sm:gap-32">
           {data.map((work) => {
             if (work?.slug?.current)
-              return <ColorWork key={work._id} slug={work.slug.current} />;
+              return <ColorWork key={work._id} data={work} />;
           })}
         </div>
       )}

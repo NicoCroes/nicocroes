@@ -3,14 +3,14 @@ import { motion } from "motion/react";
 import { urlFor } from "../lib/sanityImageUrl";
 import type {
   DpWorkBySlugQueryResult,
-  ColorWorkBySlugQueryResult,
+  ColorWorksListQueryResult,
 } from "../lib/types";
 
 type DpImage = NonNullable<
   NonNullable<DpWorkBySlugQueryResult>["images"]
 >[number];
 type ColorImage = NonNullable<
-  NonNullable<ColorWorkBySlugQueryResult>["images"]
+  NonNullable<ColorWorksListQueryResult>[number]["images"]
 >[number];
 
 type GalleryImage = DpImage | ColorImage;
