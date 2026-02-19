@@ -21,7 +21,7 @@ export default function ColorWork({
 
   return (
     <div className="flex w-full flex-col items-center gap-4">
-      <h1 className="self-start text-3xl sm:text-5xl">
+      <h1 className="self-start">
         {data?.title?.[language] || data?.title?.es || data?.title?.en}
       </h1>
       {additionaInfo && <PortableText value={additionaInfo} />}
