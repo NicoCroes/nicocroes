@@ -2,7 +2,7 @@ import useLanguage from "../hooks/useLanguage";
 import { PortableText } from "@portabletext/react";
 import VimeoEmbedPlayer from "../components/VimeoEmbedPlayer";
 import { urlFor } from "../lib/sanityImageUrl";
-import Carousel from "./Carousel";
+import ImageSlider from "./ImageSlider";
 import Image from "../components/Image";
 import type { ColorWorksListQueryResult } from "../lib/types";
 
@@ -51,7 +51,7 @@ export default function ColorWork({
       </div>
       {data?.images?.length && (
         <div className="mt-4 w-full columns-1 rounded-2xl transition-all duration-300 sm:w-3/4">
-          <Carousel images={data?.images ?? data.images} />
+          <ImageSlider images={data?.images ?? data.images} />
         </div>
       )}
     </div>
