@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { removeInitialLoader } from "./utils/removeInitialLoader";
 import { useGeneralData, useDpWorksList } from "./hooks/useData";
-import { Routes, Route, useLocation } from "react-router";
+import { Link, Routes, Route, useLocation } from "react-router";
 import { AnimatePresence } from "motion/react";
 import Works from "./pages/Works";
 import DpWorkPage from "./pages/DpWorkPage";
@@ -38,9 +38,11 @@ function App() {
     >
       <header className="pointer-events-none sticky top-0 z-10 flex h-12 items-start justify-between px-2 py-2 sm:h-18">
         <div className="pointer-events-auto">
-          <h1 className="rounded bg-white/40 px-2 uppercase backdrop-blur-xl">
-            {data?.name && data.name}
-          </h1>
+          <Link to="/">
+            <h1 className="rounded bg-white/40 px-2 uppercase backdrop-blur-xl">
+              {data?.name && data.name}
+            </h1>
+          </Link>
         </div>
         <div className="pointer-events-auto justify-self-end">
           <LaguageToggle />
