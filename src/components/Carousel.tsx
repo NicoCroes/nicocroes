@@ -64,21 +64,53 @@ export default function Carousel({ images }: ImageGalleryProps) {
   return (
     <div className="relative w-full">
       {canScrollPrev && (
-        <button
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           onClick={() => scrollBySlide(-1)}
-          className="bg-rey/60 absolute top-1/2 left-2 z-5 -translate-y-1/2 cursor-pointer rounded px-4 text-white backdrop-blur sm:-left-12"
+          className="text-rey absolute -bottom-10 left-2 z-5 cursor-pointer rounded backdrop-blur sm:top-1/2 sm:bottom-auto sm:-left-12 sm:-translate-y-1/2"
         >
-          ‹
-        </button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="36"
+            height="36"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="lucide lucide-arrow-left-icon lucide-arrow-left"
+          >
+            <path d="m12 19-7-7 7-7" />
+            <path d="M19 12H5" />
+          </svg>
+        </motion.button>
       )}
 
       {canScrollNext && (
-        <button
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           onClick={() => scrollBySlide(1)}
-          className="bg-rey/60 absolute top-1/2 right-2 z-5 -translate-y-1/2 cursor-pointer rounded px-4 text-white backdrop-blur sm:-right-12"
+          className="text-rey absolute right-2 -bottom-10 z-5 cursor-pointer rounded backdrop-blur sm:top-1/2 sm:-right-12 sm:bottom-auto sm:-translate-y-1/2"
         >
-          ›
-        </button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="36"
+            height="36"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="lucide lucide-arrow-right-icon lucide-arrow-right"
+          >
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </motion.button>
       )}
 
       <div
