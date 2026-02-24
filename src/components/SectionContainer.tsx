@@ -12,7 +12,7 @@ export default function SectionContainer({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex min-h-[calc(100vh-72px)] flex-col px-4"
+      className="flex min-h-[calc(100dvh-72px)] flex-col px-4"
     >
       {children}
     </motion.section>
