@@ -18,7 +18,7 @@ export async function getGeneralData() {
 }
 
 const dpWorksListQuery = defineQuery(`
-  *[_type == "dpWork"] | order(date desc){
+  *[_type == "dpWork" && visible != false && defined(mainImage)] | order(coalesce(order, 9999) asc, date desc){
     _id,
     title,
     slug,

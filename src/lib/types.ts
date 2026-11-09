@@ -406,7 +406,7 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "\n  *[_type == \"generalData\"][0]{\n    name,\n    detail,\n    coverVideo,\n    colorTitle,\n    colorInfo,\n    bio,\n    profileImage,\n    links\n  }": GeneralDataQueryResult;
-    "\n  *[_type == \"dpWork\"] | order(date desc){\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n  }": DpWorksListQueryResult;
+    "\n  *[_type == \"dpWork\" && visible != false && defined(mainImage)] | order(coalesce(order, 9999) asc, date desc){\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n  }": DpWorksListQueryResult;
     "\n  *[_type == \"dpWork\" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n    vimeoEmbed,\n    images[]{\n      _key, \n      asset,\n      \"dimensions\": asset->metadata.dimensions,\n    },\n    additionalInfo,\n  }": DpWorkBySlugQueryResult;
     "\n  *[_type == \"colorWork\"] | order(date desc){\n    _id,\n    title,\n    slug,\n    date,\n    client,\n    director,\n    production,\n    mainImage,\n    vimeoEmbed,\n    images[]{\n      _key, \n      asset,\n      \"dimensions\": asset->metadata.dimensions,\n    },\n    additionalInfo,\n  }": ColorWorksListQueryResult;
   }
