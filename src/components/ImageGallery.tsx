@@ -21,14 +21,20 @@ interface ImageGalleryProps {
 export default function ImageGallery({ images }: ImageGalleryProps) {
   return (
     <>
-      <div className="w-full columns-1 gap-4 pt-4 transition-all duration-300">
-        {images.map((image) => {
+      {/* Primera imagen a todo el ancho; el resto en 2 columnas (en pantallas medianas o más).
+          Si sobra una al final, también va a todo el ancho para no dejar huecos. */}
+      <div className="grid w-full grid-cols-1 gap-4 pt-4 transition-all duration-300 md:grid-cols-2 md:gap-6">
+        {images.map((image, index) => {
+          const isFirst = index === 0;
+          const isLoneLast =
+            index === images.length - 1 && (images.length - 1) % 2 === 1;
+          const fullWidth = isFirst || isLoneLast;
           return (
             <motion.div
               key={image._key}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              className="relative mb-8 w-full break-inside-avoid overflow-hidden rounded-2xl"
+              className={`relative w-full overflow-hidden rounded-2xl ${fullWidth ? "md:col-span-2" : ""}`}
               style={{
                 aspectRatio: image.dimensions?.aspectRatio,
               }}
