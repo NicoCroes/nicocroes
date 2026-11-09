@@ -10,12 +10,14 @@ import Bio from "./pages/Bio";
 import LaguageToggle from "./components/LanguageToggle";
 import NavMenu from "./components/NavMenu";
 import Footer from "./components/Footer";
+import useLanguage from "./hooks/useLanguage";
 import { motion } from "motion/react";
 
 function App() {
   const generalData = useGeneralData();
   const dpWorksList = useDpWorksList();
   const location = useLocation();
+  const { language } = useLanguage();
 
   const isLoading = dpWorksList.isLoading || generalData.isLoading;
   const error = dpWorksList.error || generalData.error;
@@ -42,6 +44,11 @@ function App() {
             <h1 className="rounded bg-white/40 px-2 uppercase backdrop-blur-xl">
               {data?.name && data.name}
             </h1>
+            {(data?.detail?.[language] || data?.detail?.es) && (
+              <p className="mt-0.5 w-fit rounded bg-white/40 px-2 text-xs tracking-wide uppercase backdrop-blur-xl sm:text-sm">
+                {data?.detail?.[language] || data?.detail?.es}
+              </p>
+            )}
           </Link>
         </div>
         <div className="pointer-events-auto justify-self-end">

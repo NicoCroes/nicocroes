@@ -56,7 +56,8 @@ export default function Bio() {
               </ul>
             )}
 
-            <ContactLinks className="mt-4 justify-center text-lg sm:justify-start" />
+            {/* En computadora el contacto ya está fijo en la esquina; aquí solo se muestra en celular. */}
+            <ContactLinks className="mt-4 justify-center text-lg sm:justify-start md:hidden" />
           </div>
         </div>
       </div>
