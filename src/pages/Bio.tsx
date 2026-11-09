@@ -7,6 +7,7 @@ import SectionContainer from "../components/SectionContainer";
 import { motion } from "motion/react";
 import Loading from "../components/Loading";
 import Image from "../components/Image";
+import ContactLinks from "../components/ContactLinks";
 
 export default function Bio() {
   const { data, isLoading, error } = useGeneralData();
@@ -54,6 +55,8 @@ export default function Bio() {
                 ))}
               </ul>
             )}
+
+            <ContactLinks className="mt-4 justify-center text-lg sm:justify-start" />
           </div>
         </div>
       </div>
