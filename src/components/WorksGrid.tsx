@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { NavLink } from "react-router";
 import { urlFor } from "../lib/sanityImageUrl";
 import useLanguage from "../hooks/useLanguage";
@@ -6,65 +5,59 @@ import type {
   DpWorksListQueryResult,
   ColorWorksListQueryResult,
 } from "../lib/types";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 
 interface WorksGidType {
   data: DpWorksListQueryResult | ColorWorksListQueryResult;
 }
 
+// Cuadrícula de 2 columnas con miniaturas panorámicas.
+// Las imágenes se recortan al centro (object-cover), así nunca se ven barras negras
+// aunque la portada original sea 4:3 o tenga franjas.
 export default function DpWorksGrid({ data }: WorksGidType) {
   const { language } = useLanguage();
-  const [hoveredWork, setHoveredWork] = useState<string | null>(null);
-
   const route = "dp";
 
   return (
-    <div
-      className={`${data?.length < 4 ? "grid-cols-1 sm:grid-cols-3" : "grid-cols-2 sm:grid-cols-4"} mb-24 grid items-center gap-2 sm:mb-32 sm:gap-6 sm:px-4`}
-    >
+    <div className="mb-24 grid w-full grid-cols-1 gap-3 sm:mb-32 sm:px-2 md:grid-cols-2 md:gap-4">
       {data?.length &&
-        data.map((work) => (
-          <NavLink to={`/${route}/${work.slug?.current}`} key={work._id}>
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              className="relative"
-            >
-              <div
-                onMouseEnter={() => setHoveredWork(work._id)}
-                onMouseLeave={() => setHoveredWork(null)}
-                className="pointer-events-auto absolute flex h-full w-full items-center"
+        data.map((work) => {
+          const title =
+            work?.title?.[language] || work?.title?.es || work?.title?.en;
+          const client = "client" in work ? work.client : null;
+          return (
+            <NavLink to={`/${route}/${work.slug?.current}`} key={work._id}>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="group relative aspect-[2.4/1] w-full overflow-hidden rounded-lg bg-black"
               >
-                <AnimatePresence>
-                  {hoveredWork === work._id && (
-                    <div
-                      key="work-card-title"
-                      className="flex w-full justify-center gap-1 px-4 text-center"
-                    >
-                      <motion.h2
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="rounded bg-white/50 px-2 text-sm uppercase backdrop-blur-xl"
-                      >
-                        {work?.title?.[language] ||
-                          work?.title?.es ||
-                          work?.title?.en}
-                      </motion.h2>
-                    </div>
+                {work?.mainImage && (
+                  <img
+                    className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                    src={urlFor(work.mainImage)
+                      .format("webp")
+                      .width(1400)
+                      .url()}
+                    alt={title || ""}
+                    loading="lazy"
+                  />
+                )}
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-black/55 px-4 text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <h2 className="text-base tracking-wide text-white uppercase sm:text-lg">
+                    {title}
+                  </h2>
+                  {client && (
+                    <p className="text-xs tracking-widest text-white/70 uppercase">
+                      {client}
+                    </p>
                   )}
-                </AnimatePresence>
-              </div>
-
-              {work?.mainImage && (
-                <img
-                  className={`rounded-xl ${hoveredWork && hoveredWork !== work._id && "grayscale"} transition`}
-                  src={urlFor(work.mainImage).format("webp").width(600).url()}
-                />
-              )}
-            </motion.div>
-          </NavLink>
-        ))}
+                </div>
+              </motion.div>
+            </NavLink>
+          );
+        })}
     </div>
   );
 }
