@@ -31,7 +31,7 @@ export default function DpWorksGrid({ data }: WorksGidType) {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                className="group relative aspect-[2.4/1] w-full overflow-hidden rounded-lg bg-black"
+                className="group relative aspect-video w-full overflow-hidden rounded-lg bg-black"
               >
                 {work?.mainImage && (
                   <img
