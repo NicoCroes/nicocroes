@@ -36,6 +36,12 @@ export default function DpWorksGrid({ data }: WorksGidType) {
                 {work?.mainImage && (
                   <img
                     className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                    style={{
+                      // Punto de enfoque definido en Sanity (hotspot); si no hay, se centra.
+                      objectPosition: work.mainImage.hotspot
+                        ? `${(work.mainImage.hotspot.x ?? 0.5) * 100}% ${(work.mainImage.hotspot.y ?? 0.5) * 100}%`
+                        : "50% 50%",
+                    }}
                     src={urlFor(work.mainImage)
                       .format("webp")
                       .width(1400)
